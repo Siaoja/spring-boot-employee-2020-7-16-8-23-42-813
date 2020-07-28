@@ -26,6 +26,11 @@ public class EmployeeController {
         return null;
     }
 
+    @PostMapping
+    public Employee addEmployee(@RequestBody Employee employee){
+        return new Employee(employee.getId(),employee.getName(),employee.getAge(),employee.getGender());
+    }
+
 
     private List<Employee> createNewEmployees() {
         List<Employee> employees = new ArrayList<>();
