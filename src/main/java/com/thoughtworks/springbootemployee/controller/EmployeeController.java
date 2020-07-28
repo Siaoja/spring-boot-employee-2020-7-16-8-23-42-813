@@ -1,10 +1,7 @@
 package com.thoughtworks.springbootemployee.controller;
 
 import com.thoughtworks.springbootemployee.model.Employee;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +13,17 @@ public class EmployeeController {
     public List<Employee> getAllEmployees(){
         List<Employee> employees = createNewEmployees();
         return employees;
+    }
+
+    @GetMapping("/{id}")
+    public Employee getEmployeeById(@PathVariable int id){
+        List<Employee> employees = createNewEmployees();
+        for(Employee employee : employees){
+            if(employee.getId() == id){
+                return employee;
+            }
+        }
+        return null;
     }
 
 
